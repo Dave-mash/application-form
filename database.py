@@ -5,17 +5,13 @@ class InitializeDb:
     """ This class sets up database connection and creates tables """
 
     def __init__(self, db_url):
-        self.env = db_url
-
-    @classmethod
-    def init_db(cls, db_url):
         try:
-            cls.connection = psycopg2.connect(db_url)
-            cls.cursor = cls.connection.cursor()
+            self.connection = psycopg2.connect(db_url)
+            self.cursor = self.connection.cursor()
             print(f'A connection to {db_url} database was established!')
         except:
             print(f'A problem occured while connecting to {db_url}')
-    
+
     def create_tables(self):
         """ This method creates tables """
 
@@ -24,7 +20,7 @@ class InitializeDb:
             CREATE TABLE IF NOT EXISTS test_users (
                 id serial PRIMARY KEY NOT NULL,
                 name TEXT NOT NULL,
-                email TEXT UNIQUE NOT NULL,
+                email TEXT NOT NULL,
                 phone INTEGER NOT NULL
             );
             CREATE TABLE IF NOT EXISTS test_address (
