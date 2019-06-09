@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container {
+            height: auto;
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-around;
+            border-left: 1px solid #000;
+            border-bottom: 1px solid #000;
+            opacity: .8;
+            flex-direction: column;
+        }
+
+        .fields {
+            /* background: red; */
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            height: auto;
+            display: flex;
+        }
+
+        .title {
+            width: 100%;
+            padding: 20px;
+            border-right: 1px solid #000;
+        }
+
+        .user-info {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            height: auto;
+            display: flex;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: 0 auto;
+        }
+    </style>
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fields">
+            <div class="title">
+                <b>Name</b>
+            </div>
+            <div class="title">
+                <b>Email</b>
+            </div>
+            <div class="title">
+                <b>Phone</b>
+            </div>
+            <div class="title">
+                <b>Home Address</b>
+            </div>
+            <div class="title">
+                <b>Office Address</b>
+            </div>
+        </div>
+        <!-- loop -->
+        {% for user in users %}
+            <div class="user-info">
+                <div class="title name">
+                    <p>{{ user.name }}</p>
+                </div>
+                <div class="title email">
+                    <p>{{ user.email }}</p>
+                </div>
+                <div class="title phone">
+                    <p>{{ user.phone }}</p>
+                </div>
+                <div class="title home-address">
+                    <p>{{ user.home_address }}</p>
+                </div>
+                <div class="title office-address">
+                    <p>{{ user.office_address }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <form method="POST" action="/insert">
+        <input placeholder="Name" name="name" type="text">
+        <input placeholder="Email" name="email" type="email">
+        <input placeholder="Phone" name="phone" type="number">
+        <input placeholder="Home Address" name="home-address" type="text">
+        <input placeholder="Office Address" name="office-address" type="text">
+        <input type="submit" value="Submit" class="btn">
+    </form>
+    <script>
+        // setTimeout()
+    </script>
+</body>
+
+</html>

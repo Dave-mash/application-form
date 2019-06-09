@@ -20,11 +20,13 @@ class InitializeDb:
             CREATE TABLE IF NOT EXISTS test_users (
                 id serial PRIMARY KEY NOT NULL,
                 name TEXT NOT NULL,
-                email TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
                 phone INTEGER NOT NULL
             );
             CREATE TABLE IF NOT EXISTS test_address (
                 id serial PRIMARY KEY NOT NULL,
+                user_email TEXT REFERENCES test_users(email)\
+                ON UPDATE CASCADE ON DELETE CASCADE,
                 home_address TEXT NOT NULL,
                 office_address TEXT NOT NULL
             );
