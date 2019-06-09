@@ -46,11 +46,6 @@ def get():
                 "SELECT row_to_json(row(name, email, phone, home_address, office_address)) FROM test_users INNER JOIN test_address ON test_address.user_email = test_users.email;"
             )
 
-        users = [
-            
-        ]
-
-        print('--->', json_output())
         for user in json_output():
             user = {
                 "name": user[0]['f1'],
@@ -118,7 +113,6 @@ def post():
         db.cursor.execute(
             "INSERT INTO test_users ({}) VALUES {};".format(keys, values)
         )
-        print('===>', [address_keys], [address_values])
         db.cursor.execute(
             "INSERT INTO test_address ({}) VALUES {};".format(address_keys, address_values)
         )
